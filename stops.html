@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Delivery Stops</title>
+
+<link rel="stylesheet" href="css/app.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="logo">
+
+🚚
+
+</div>
+
+<h1>Today's Deliveries</h1>
+
+<p id="driverName">
+
+Loading...
+
+</p>
+
+</header>
+
+<div class="card">
+
+<h2>
+
+Trip <span id="tripNumber">1</span>
+
+</h2>
+
+<div class="progress">
+
+<div class="progress-text">
+
+Completed
+
+<span id="progressText">
+
+0 / 0
+
+</span>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+id="progressFill"
+class="progress-fill">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+id="stopsContainer">
+
+</div>
+
+
+<footer>
+
+Version Alpha 1.0
+
+</footer>
+
+</div>
+
+
+<script src="js/state.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+if(!AppState.driver.name){
+
+window.location.href="index.html";
+
+return;
+
+}
+
+document.getElementById("driverName")
+
+.innerHTML=
+
+AppState.driver.name;
+
+document.getElementById("tripNumber")
+
+.innerHTML=
+
+AppState.route.trip;
+
+
+/* ----------------------------------
+
+Demo Stops
+
+Later these come from SharePoint
+
+-----------------------------------*/
+
+const stops= await SharePoint.getStops(
+    AppState.driver,
+    AppState.route
+);
+
+
+setDeliveryList(stops);
+
+
+renderStops();
+
+});
+
+
+function renderStops(){
+
+const container=
+
+document.getElementById("stopsContainer");
+
+container.innerHTML="";
+
+const total=
+
+AppState.deliveries.total;
+
+const completed=
+
+AppState.deliveries.completed;
+
+document.getElementById("progressText")
+
+.innerHTML=
+
+completed+
+
+" / "+
+
+total;
+
+document.getElementById("progressFill")
+
+.style.width=
+
+progressPercent()+"%";
+
+
+AppState.deliveries.remaining.forEach(stop=>{
+
+const card=
+
+document.createElement("div");
+
+card.className="stop-card";
+
+card.innerHTML=`
+
+<h3>${stop.name}</h3>
+
+<p>${stop.address}</p>
+
+<p>
+
+Receiver :
+
+${stop.receiver}
+
+</p>
+
+<button
+onclick="openStop('${stop.locationId}')">
+
+Open Delivery
+
+</button>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+function openStop(locationId){
+
+const stop=
+
+AppState.deliveries.remaining.find(
+
+s=>s.locationId===locationId
+
+);
+
+setCurrentStop(stop);
+
+window.location.href="delivery.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
