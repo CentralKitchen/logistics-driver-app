@@ -57,6 +57,18 @@ async function loadDrivers() {
 
     dropdown.innerHTML = "";
 
+	const placeholder = document.createElement("option");
+
+	placeholder.value = "";
+
+	placeholder.textContent = "-- Select Driver --";
+
+	placeholder.disabled = true;
+	
+	placeholder.selected = true;
+
+	dropdown.appendChild(placeholder);
+
     try {
 
         const drivers = await SharePoint.getDrivers();
