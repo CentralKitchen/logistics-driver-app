@@ -71,7 +71,7 @@ async function loadDrivers() {
 
             option.value = driver.DriverID;
 
-            option.textContent = driver.Title;
+            option.textContent = driver.Name;
 
             dropdown.appendChild(option);
 
