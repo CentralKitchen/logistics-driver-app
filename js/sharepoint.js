@@ -38,12 +38,27 @@ class SharePoint {
 
     static async getDrivers() {
 
-        return await this.getListItems(
-            Auth.getList("drivers"),
-            "Status eq 'Active'"
-        );
+    const response = await fetch(this.flowUrl, {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        }
+
+    });
+
+    if (!response.ok) {
+
+        throw new Error("Unable to load drivers");
 
     }
+
+    return await response.json();
+
+}
 
     static async getRoutes() {
 
