@@ -7,6 +7,9 @@
 
 class SharePoint {
 
+ static flowUrl =
+"https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com/powerautomate/automations/direct/cu/06/workflows/9ecc610fb4064da9ba43e5a61c60426b/triggers/manual/paths/invoke?api-version=1";
+ 
     static headers = {
         "Accept": "application/json;odata=nometadata"
     };
@@ -46,7 +49,9 @@ class SharePoint {
 
             "Content-Type": "application/json"
 
-        }
+        },
+
+        body: "{}"
 
     });
 
