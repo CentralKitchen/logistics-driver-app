@@ -190,20 +190,26 @@ card.className="stop-card";
 
 card.innerHTML=`
 
-<h3>${stop.name}</h3>
+<h3>${stop.CentreName}</h3>
 
-<p>${stop.address}</p>
+<p>${stop.Address}</p>
 
 <p>
 
 Receiver :
 
-${stop.receiver}
+${stop.Receiver}
 
 </p>
 
 <button
-onclick="openStop('${stop.locationId}')">
+onclick="openStop('${stop.StopID}')">
+
+Open Delivery
+
+</button>
+
+`;
 
 Open Delivery
 
