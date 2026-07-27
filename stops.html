@@ -132,8 +132,11 @@ const stops= await SharePoint.getStops(
     AppState.route.trip
 );
 
-    console.log(stops);
-    console.table(stops.body[0]);
+    console.log("First Stop");
+
+    for (const key in stops.body[0]) {
+    console.log(key + " = ", stops.body[0][key]);
+}
 
 
 setDeliveryList(stops.body);
