@@ -105,7 +105,11 @@ document.getElementById("tripSelect").value;
 
 setRoute({
 
-trip:Number(trip)
+    routeId: AppState.driver.routeID,
+
+    trip: "Trip " + trip,
+
+    driverId: AppState.driver.id
 
 });
 
