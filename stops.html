@@ -133,7 +133,7 @@ const stops= await SharePoint.getStops(
 );
 
     console.log(stops);
-    console.table(stops);
+    console.table(stops.body[0]);
 
 
 setDeliveryList(stops.body);
