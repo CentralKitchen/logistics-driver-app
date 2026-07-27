@@ -28,9 +28,9 @@ const defaultState = {
 
     route: {
 
-        routeId:"",
+      routeID:"",
     	trip:"",
-    	driverId:""
+    	driverID:""
     },
 
     deliveries: {
