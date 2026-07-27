@@ -126,9 +126,12 @@ Later these come from SharePoint
 -----------------------------------*/
 
 const stops= await SharePoint.getStops(
-    AppState.driver,
-    AppState.route
+    AppState.driver.routeID,
+    AppState.route.trip
 );
+
+    console.log(stops);
+    console.table(stops);
 
 
 setDeliveryList(stops);
