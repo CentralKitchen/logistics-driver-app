@@ -76,8 +76,18 @@ class SharePoint {
         );
 
     }
+ 
+static async getStops(routeId, trip) {
 
-    static async getStops(routeId, trip) {
+    const payload = {
+
+        RouteID: routeId,
+        Trip: trip
+
+    };
+
+    console.log("========== GET STOPS ==========");
+    console.log(payload);
 
     const response = await fetch(this.stopFlowUrl, {
 
@@ -87,15 +97,14 @@ class SharePoint {
             "Content-Type": "application/json"
         },
 
-        body: JSON.stringify({
-            RouteID: routeId,
-            Trip: trip
-        })
+        body: JSON.stringify(payload)
 
     });
 
     if (!response.ok) {
+
         throw new Error("Unable to load stops");
+
     }
 
     return await response.json();
