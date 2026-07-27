@@ -7,10 +7,13 @@
 
 class SharePoint {
 
- static flowUrl =
+ static driverFlowUrl =
 "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/06/workflows/9ecc610fb4064da9ba43e5a61c60426b/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=arB1p_qgTXJjYWckjpsm-axtiri8D1RRdA04FMsR5M8";
+
+ static stopFlowUrl =
+ "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/16/workflows/f0f73189bb7940c4bd662c3331603e65/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VZbgmCo63FkCWoehmuMckMFWug4cbcIiJcREJxel94E";
  
-    static headers = {
+ static headers = {
         "Accept": "application/json;odata=nometadata"
     };
 
@@ -41,7 +44,7 @@ class SharePoint {
 
     static async getDrivers() {
 
-    const response = await fetch(this.flowUrl, {
+    const response = await fetch(this.driverFlowUrl, {
 
         method: "POST",
 
@@ -76,14 +79,27 @@ class SharePoint {
 
     static async getStops(routeId, trip) {
 
-        let filter =
-            `RouteID eq '${routeId}' and Trip eq '${trip}'`;
+    const response = await fetch(this.stopFlowUrl, {
 
-        return await this.getListItems(
-            Auth.getList("stops"),
-            filter
-        );
+        method: "POST",
 
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            RouteID: routeId,
+            Trip: trip
+        })
+
+    });
+
+    if (!response.ok) {
+        throw new Error("Unable to load stops");
     }
+
+    return await response.json();
+
+}
 
 }
