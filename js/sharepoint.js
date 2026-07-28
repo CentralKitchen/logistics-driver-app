@@ -143,6 +143,3 @@ static async completeDelivery(data) {
 }
 
 }
-
-console.log("SharePoint.js loaded successfully");
-window.SharePoint = SharePoint;
