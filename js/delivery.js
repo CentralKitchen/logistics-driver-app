@@ -147,7 +147,6 @@ document.getElementById("completeBtn")
             CompletedTime: new Date().toISOString(),
 
             PhotoName:
-            PhotoName:
             `${AppState.serviceDate.replace(/-/g,"")}_${AppState.route.routeId}_${AppState.route.trip.replace(/\s/g,"")}_Stop${String(stop.StopOrder).padStart(2,"0")}_${stop.CentreName.replace(/[^a-zA-Z0-9]/g,"")}.jpg`,
 
             PhotoBase64: photoBase64
