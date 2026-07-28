@@ -124,8 +124,6 @@ Demo Stops
 Later these come from SharePoint
 
 -----------------------------------*/
-
-console.log(AppState.route);
     
 // Only download stops when starting a brand-new route
 
@@ -138,8 +136,6 @@ if (
         AppState.route.routeId,
         AppState.route.trip
     );
-
-    console.log("First Stop");
 
     for (const key in stops.body[0]) {
         console.log(key + " = ", stops.body[0][key]);
