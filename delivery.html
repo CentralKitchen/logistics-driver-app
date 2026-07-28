@@ -67,7 +67,22 @@ Take Delivery Photo
 
 </button>
 
-<p id="photoStatus">
+<img
+id="photoPreview"
+style="
+width:100%;
+margin-top:15px;
+border-radius:12px;
+display:none;
+">
+
+<p
+id="photoStatus"
+style="
+margin-top:12px;
+text-align:center;
+color:#777;
+">
 
 No photo captured.
 
@@ -120,6 +135,13 @@ Version Alpha 1.0
 
 <script src="js/state.js"></script>
 <script src="js/delivery.js"></script>
+
+<input
+id="photoInput"
+type="file"
+accept="image/*"
+capture="environment"
+style="display:none;">  
 
 </body>
 
