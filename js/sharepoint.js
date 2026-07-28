@@ -71,15 +71,15 @@ class SharePoint {
 
 }
 
-    static async getRoutes() {
+   static async getRoutes() {
 
-        return await this.getListItems(
-            Auth.getList("routes"),
-            "Status eq 'Active'"
-        );
+    return await this.getListItems(
+        Auth.getList("routes"),
+        "Status eq 'Active'"
+    );
 
-    }
- 
+}
+
 static async getStops(routeId, trip) {
 
     const payload = {
@@ -88,6 +88,31 @@ static async getStops(routeId, trip) {
         Trip: trip
 
     };
+
+    console.log("========== GET STOPS ==========");
+    console.log(payload);
+
+    const response = await fetch(this.stopFlowUrl, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(payload)
+
+    });
+
+    if (!response.ok) {
+
+        throw new Error("Unable to load stops");
+
+    }
+
+    return await response.json();
+
+}
 
 /* ===========================================
 Complete Delivery
@@ -110,31 +135,6 @@ static async completeDelivery(data) {
     if (!response.ok) {
 
         throw new Error("Unable to upload delivery.");
-
-    }
-
-    return await response.json();
-
-}
- 
-    console.log("========== GET STOPS ==========");
-    console.log(payload);
-
-    const response = await fetch(this.stopFlowUrl, {
-
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify(payload)
-
-    });
-
-    if (!response.ok) {
-
-        throw new Error("Unable to load stops");
 
     }
 
