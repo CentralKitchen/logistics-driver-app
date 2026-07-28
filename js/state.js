@@ -211,17 +211,17 @@ function completeCurrentStop(data = {}) {
 
     AppState.deliveries.history.push(completed);
 
-    AppState.deliveries.remaining =
+  AppState.deliveries.remaining =
 
-        AppState.deliveries.remaining.filter(
+    AppState.deliveries.remaining.filter(
 
-            stop => stop.locationId !== completed.locationId
+        stop => stop.StopID !== completed.StopID
 
-        );
+    );
 
     AppState.deliveries.completed =
-
-        AppState.deliveries.history.length;
+    AppState.deliveries.total -
+    AppState.deliveries.remaining.length;
 
     AppState.currentStop = null;
 
