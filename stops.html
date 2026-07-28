@@ -127,23 +127,29 @@ Later these come from SharePoint
 
 console.log(AppState.route);
     
-const stops= await SharePoint.getStops(
-    AppState.route.routeId,
-    AppState.route.trip
-);
+// Only download stops when starting a brand-new route
+
+if (
+    AppState.deliveries.remaining.length === 0 &&
+    AppState.deliveries.history.length === 0
+) {
+
+    const stops = await SharePoint.getStops(
+        AppState.route.routeId,
+        AppState.route.trip
+    );
 
     console.log("First Stop");
 
     for (const key in stops.body[0]) {
-    console.log(key + " = ", stops.body[0][key]);
+        console.log(key + " = ", stops.body[0][key]);
+    }
+
+    setDeliveryList(stops.body);
+
 }
 
-
-setDeliveryList(stops.body);
-
-
 renderStops();
-
 });
 
 
