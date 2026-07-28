@@ -12,6 +12,9 @@ class SharePoint {
 
  static stopFlowUrl =
  "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/16/workflows/f0f73189bb7940c4bd662c3331603e65/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VZbgmCo63FkCWoehmuMckMFWug4cbcIiJcREJxel94E";
+
+ static completeDeliveryFlowUrl = 
+ "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/22/workflows/e7e43362ce1949919b56a4b413790683/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=LXuWIjZnQ5YO4hKJMdYS-oCno4XBDEBCor7f65lNf5M";
  
  static headers = {
         "Accept": "application/json;odata=nometadata"
@@ -86,6 +89,34 @@ static async getStops(routeId, trip) {
 
     };
 
+/* ===========================================
+Complete Delivery
+=========================================== */
+
+static async completeDelivery(data) {
+
+    const response = await fetch(this.completeDeliveryFlowUrl, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(data)
+
+    });
+
+    if (!response.ok) {
+
+        throw new Error("Unable to upload delivery.");
+
+    }
+
+    return await response.json();
+
+}
+ 
     console.log("========== GET STOPS ==========");
     console.log(payload);
 
