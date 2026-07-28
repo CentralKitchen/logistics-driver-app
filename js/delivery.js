@@ -36,9 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("receiverContact").innerHTML =
         stop.ContactNumber;
 
-});
-
-/* ===========================================
+    /* ===========================================
 Take Delivery Photo
 =========================================== */
 
@@ -98,9 +96,11 @@ document
 
         "📷 Retake Delivery Photo";
 
-    };
-
+        };
+    
     reader.readAsDataURL(file);
+
+    });
 
 });
 
