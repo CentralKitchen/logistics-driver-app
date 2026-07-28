@@ -102,5 +102,77 @@ document
 
     });
 
+    /* ===========================================
+Complete Delivery
+=========================================== */
+
+document.getElementById("completeBtn")
+
+.addEventListener("click", async () => {
+
+    if(photoBase64 === ""){
+
+        alert("Please take a delivery photo first.");
+
+        return;
+
+    }
+
+    const btn = document.getElementById("completeBtn");
+
+    btn.disabled = true;
+
+    btn.innerHTML = "Uploading...";
+    
+    try{
+
+        const stop = AppState.currentStop;
+
+        await SharePoint.completeDelivery({
+
+            ServiceDate: AppState.serviceDate,
+
+            DriverID: AppState.driver.id,
+
+            RouteID: AppState.route.routeId,
+
+            Trip: AppState.route.trip,
+
+            StopID: stop.StopID,
+
+            StopOrder: stop.StopOrder,
+
+            CentreName: stop.CentreName,
+
+            CompletedTime: new Date().toISOString(),
+
+            PhotoName:
+            PhotoName:
+            `${AppState.serviceDate.replace(/-/g,"")}_${AppState.route.routeId}_${AppState.route.trip.replace(/\s/g,"")}_Stop${String(stop.StopOrder).padStart(2,"0")}_${stop.CentreName.replace(/[^a-zA-Z0-9]/g,"")}.jpg`,
+
+            PhotoBase64: photoBase64
+
+        });
+
+        completeCurrentStop();
+
+        window.location.href="stops.html";
+
+    }
+
+    catch(err){
+
+    console.error(err);
+
+    btn.disabled = false;
+
+    btn.innerHTML = "✅ COMPLETE DELIVERY";
+
+    alert("Upload failed.");
+
+}
+
+    });
+
 });
 
