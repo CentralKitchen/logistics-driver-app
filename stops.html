@@ -118,23 +118,18 @@ AppState.route.trip;
 
 
 /* ----------------------------------
-
-Demo Stops
-
-Later these come from SharePoint
-
+Load Stops
 -----------------------------------*/
-    
-// Only download stops when starting a brand-new route
 
 const stops = await SharePoint.getStops(
     AppState.route.routeId,
     AppState.route.trip
 );
 
-setDeliveryList(stops.body);
+console.log("Downloaded Stops");
+console.log(stops);
 
-}
+setDeliveryList(stops.body);
 
 renderStops();
 });
