@@ -61,11 +61,16 @@ class SharePoint {
 
     });
 
-    if (!response.ok) {
+   if (!response.ok) {
 
-        throw new Error("Unable to load drivers");
+    const errorText = await response.text();
 
-    }
+    console.error("FLOW ERROR:");
+    console.error(errorText);
+
+    throw new Error(errorText);
+
+}
 
     return await response.json();
 
