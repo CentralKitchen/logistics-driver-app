@@ -128,6 +128,38 @@ document.getElementById("completeBtn")
 
         const stop = AppState.currentStop;
 
+    const payload = {
+
+    ServiceDate: AppState.serviceDate,
+
+    DriverID: AppState.driver.id,
+
+    RouteID: AppState.route.routeId,
+
+    Trip: AppState.route.trip,
+
+    StopID: stop.StopID,
+
+    StopOrder: stop.StopOrder,
+
+    CentreName: stop.CentreName,
+
+    CompletedTime: new Date().toISOString(),
+
+    PhotoName:
+        `${AppState.serviceDate.replace(/-/g,"")}_${AppState.route.routeId}_${AppState.route.trip.replace(" ","")}_Stop${stop.StopOrder}_${stop.CentreCode}.jpg`,
+
+    PhotoBase64: photoBase64
+
+};
+
+console.log(payload);
+
+await SharePoint.completeDelivery(payload);
+       
+        
+        
+        
         await SharePoint.completeDelivery({
 
             ServiceDate: AppState.serviceDate,
