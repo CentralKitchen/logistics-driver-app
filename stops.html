@@ -143,12 +143,20 @@ console.log(completed);
 // Build array of completed StopIDs
 const completedIds = completed.map(x => String(x.StopID));
 
+// Total number of stops before filtering
+const totalStops = stops.body.length;
+
 // Remove completed stops
-stops.body = stops.body.filter(
+const remainingStops = stops.body.filter(
     stop => !completedIds.includes(String(stop.StopID))
 );
 
-setDeliveryList(stops.body);
+// Update state correctly
+AppState.deliveries.remaining = remainingStops;
+AppState.deliveries.total = totalStops;
+AppState.deliveries.completed = completed.length;
+
+saveState();
 
 renderStops();
     
