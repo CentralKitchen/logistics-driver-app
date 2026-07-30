@@ -153,7 +153,7 @@ static async getCompletedStops(serviceDate, driverId, routeId, trip) {
    console.log("========== RAW COMPLETED FLOW RESPONSE ==========");
    console.log(data);
 
-   return [];
+   return data;
 
 }
  
