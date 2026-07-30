@@ -148,7 +148,12 @@ static async getCompletedStops(serviceDate, driverId, routeId, trip) {
 
     });
 
-    return await response.json();
+   const data = await response.json();
+
+   console.log("Completed Stops");
+   console.log(data);
+
+   return data.body.value;
 
 }
  
