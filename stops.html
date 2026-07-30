@@ -129,9 +129,29 @@ const stops = await SharePoint.getStops(
 console.log("Downloaded Stops");
 console.log(stops);
 
+// NEW
+const completed = await SharePoint.getCompletedStops(
+    AppState.serviceDate,
+    AppState.driver.id,
+    AppState.route.routeId,
+    AppState.route.trip
+);
+
+console.log("Completed Stops");
+console.log(completed);
+
+// Build array of completed StopIDs
+const completedIds = completed.map(x => String(x.StopID));
+
+// Remove completed stops
+stops.body = stops.body.filter(
+    stop => !completedIds.includes(String(stop.StopID))
+);
+
 setDeliveryList(stops.body);
 
 renderStops();
+    
 });
 
 
