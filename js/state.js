@@ -309,10 +309,8 @@ window.addEventListener("offline", () => {
    Initialize
 ========================================================== */
 
-if (!AppState.serviceDate) {
+// Always refresh service date whenever app starts
 
-    setServiceDate();
-
-}
+setServiceDate();
 
 saveState();
