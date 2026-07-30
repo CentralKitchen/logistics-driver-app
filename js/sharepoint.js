@@ -150,10 +150,10 @@ static async getCompletedStops(serviceDate, driverId, routeId, trip) {
 
    const data = await response.json();
 
-   console.log("Completed Stops");
+   console.log("========== RAW COMPLETED FLOW RESPONSE ==========");
    console.log(data);
 
-   return data.body.value;
+   return [];
 
 }
  
