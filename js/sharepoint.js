@@ -13,6 +13,9 @@ class SharePoint {
  static stopFlowUrl =
  "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/16/workflows/f0f73189bb7940c4bd662c3331603e65/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VZbgmCo63FkCWoehmuMckMFWug4cbcIiJcREJxel94E";
 
+ static completedStopsFlowUrl = 
+ "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/05/workflows/85e3444387324e8f8598778cb6a43390/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Gb_ViTS_KORI9tABNVehL-vih3xOSNUkclWnFGFZG-k";
+ 
  static completeDeliveryFlowUrl = 
  "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/22/workflows/e7e43362ce1949919b56a4b413790683/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=LXuWIjZnQ5YO4hKJMdYS-oCno4XBDEBCor7f65lNf5M";
  
@@ -119,6 +122,36 @@ static async getStops(routeId, trip) {
 
 }
 
+static async getCompletedStops(serviceDate, driverId, routeId, trip) {
+
+    const payload = {
+
+        ServiceDate: serviceDate,
+        DriverID: driverId,
+        RouteID: routeId,
+        Trip: trip
+
+    };
+
+    console.log("========== GET COMPLETED STOPS ==========");
+    console.log(payload);
+
+    const response = await fetch(this.completedStopsFlowUrl, {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(payload)
+
+    });
+
+    return await response.json();
+
+}
+ 
 /* ===========================================
 Complete Delivery
 =========================================== */
