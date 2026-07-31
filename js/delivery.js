@@ -159,7 +159,13 @@ await SharePoint.completeDelivery(payload);
        
          completeCurrentStop();
 
-        window.location.href="stops.html";
+if(AppState.deliveries.remaining.length===0){
+
+    window.location.href="completed.html";
+
+}else{
+
+    window.location.href="stops.html";
 
     }
 
