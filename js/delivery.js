@@ -134,6 +134,14 @@ document.getElementById("completeBtn")
 
     DriverID: AppState.driver.id,
 
+    DriverType: AppState.driver.type,
+
+    ContractorName: AppState.driver.contractorName || "",
+
+    Company: AppState.driver.company || "",
+
+    VehiclePlate: AppState.driver.vehiclePlate || "",
+  
     RouteID: AppState.route.routeId,
 
     Trip: AppState.route.trip,
