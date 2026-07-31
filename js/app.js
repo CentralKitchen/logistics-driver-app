@@ -31,15 +31,21 @@ function initialiseDriverType() {
 
     const contractorFields = document.getElementById("contractorFields");
 
+    const driverLabel = document.getElementById("driverLabel");
+
     type.addEventListener("change", () => {
 
         if (type.value === "Contractor") {
 
             contractorFields.style.display = "block";
 
+            driverLabel.innerHTML = "Replacing Driver";
+
         } else {
 
             contractorFields.style.display = "none";
+
+            driverLabel.innerHTML = "Driver Name";
 
         }
 
@@ -118,7 +124,14 @@ function initialiseLogin() {
 async function loginDriver() {
 
     const driverDropdown = document.getElementById("driver");
-    const typeDropdown = document.getElementById("driverType");
+    
+	const typeDropdown = document.getElementById("driverType");
+	
+	const contractorName = document.getElementById("contractorName").value.trim();
+	
+	const company = document.getElementById("company").value.trim();
+	
+	const vehiclePlate = document.getElementById("vehiclePlate").value.trim();
 
     const driverID = driverDropdown.value;
 
@@ -133,7 +146,23 @@ async function loginDriver() {
         return;
 
     }
+	
+	if (typeDropdown.value === "Contractor") {
 
+    if (
+        contractorName === "" ||
+        company === "" ||
+        vehiclePlate === ""
+    ) {
+
+        alert("Please complete all contractor information.");
+
+        return;
+
+    }
+
+}
+	
     const driver = {
 
         id: selectedDriver.DriverID,
@@ -146,10 +175,12 @@ async function loginDriver() {
 
         type: typeDropdown ? typeDropdown.value : "",
 
-        company: "",
+      	company: company,
 
-        vehiclePlate: ""
+   		vehiclePlate: vehiclePlate,
 
+   		contractorName: contractorName
+		
     };
 
     setDriver(driver);
