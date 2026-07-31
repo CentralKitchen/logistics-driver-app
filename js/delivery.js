@@ -169,6 +169,8 @@ if(AppState.deliveries.remaining.length===0){
 
     }
 
+    }
+        
     catch(err){
 
     console.error(err);
