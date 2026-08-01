@@ -133,6 +133,8 @@ async function loginDriver() {
 	
 	const vehiclePlate = document.getElementById("vehiclePlate").value.trim();
 
+	const enteredPin = document.getElementById("driverPin").value.trim();
+
     const driverID = driverDropdown.value;
 
     const selectedDriver = window.driverList.find(
@@ -146,7 +148,23 @@ async function loginDriver() {
         return;
 
     }
-	
+
+	if (enteredPin === "") {
+
+    alert("Please enter your PIN.");
+
+    return;
+
+	}
+
+if (enteredPin !== String(selectedDriver.PIN)) {
+
+    alert("Incorrect PIN.");
+
+    return;
+
+}
+
 	if (typeDropdown.value === "Contractor") {
 
     if (
