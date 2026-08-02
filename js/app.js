@@ -77,11 +77,17 @@ async function loadDrivers() {
 
     try {
 
-        const drivers = await SharePoint.getDrivers();
-	
+       const drivers = await SharePoint.getDrivers();
+
 	window.driverList = drivers;
-	
+
+	const contractors = await SharePoint.getContractors();
+
+	window.contractorList = contractors;
+
 	console.table(drivers);
+
+	console.table(contractors);
 
         drivers.forEach(driver => {
 
