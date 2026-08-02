@@ -188,6 +188,10 @@ static async getContractors() {
 
     const data = await response.json();
 
+    console.log("Contractor Flow Response");
+
+    console.table(data);
+
     return data;
 
 }
