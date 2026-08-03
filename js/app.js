@@ -81,13 +81,24 @@ async function loadDrivers() {
 
 	window.driverList = drivers;
 
-	const contractors = await SharePoint.getContractors();
+	let contractors = [];
 
-	window.contractorList = contractors;
+	try {
 
-	console.table(drivers);
+    contractors = await SharePoint.getContractors();
 
-	console.table(contractors);
+    window.contractorList = contractors;
+
+    console.table(contractors);
+
+	}
+	catch (err) {
+
+    console.warn("Contractor flow unavailable.");
+
+    window.contractorList = [];
+
+	}
 
         drivers.forEach(driver => {
 
