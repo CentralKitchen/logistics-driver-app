@@ -211,14 +211,17 @@ button{
 
     cursor:pointer;
 
-button#photoBtn {
-    margin-top: 10px;
-   
     font-size:17px;
 
     font-weight:700;
 
     transition:var(--transition);
+
+}
+
+button#photoBtn{
+
+    margin-top:10px;
 
 }
 
