@@ -161,11 +161,30 @@ async function loginDriver() {
 
 	}
 
-if (enteredPin !== String(selectedDriver.PIN)) {
+if (typeDropdown.value === "Permanent") {
 
-    alert("Incorrect PIN.");
+    if (enteredPin !== String(selectedDriver.PIN)) {
 
-    return;
+        alert("Incorrect PIN.");
+
+        return;
+
+    }
+
+} else {
+
+    const contractor = window.contractorList.find(c =>
+        String(c.PIN) === enteredPin &&
+        c.Status === "Active"
+    );
+
+    if (!contractor) {
+
+        alert("Invalid or inactive Contractor PIN.");
+
+        return;
+
+    }
 
 }
 
