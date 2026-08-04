@@ -231,9 +231,62 @@ container.appendChild(card);
 
 });
 
+// NEW
+renderAdditionalDeliveryCard(container);
+
 }
 
+function renderAdditionalDeliveryCard(container){
 
+const card=document.createElement("div");
+
+card.className="additional-card";
+
+card.innerHTML=`
+
+<div class="additional-header">
+
+🟧 ADDITIONAL DELIVERY
+
+</div>
+
+<div class="additional-body">
+
+Need to make an additional delivery?
+
+<br><br>
+
+• 📦 New Ad-hoc Delivery
+
+<br>
+
+• 🔄 Revisit Completed Delivery
+
+</div>
+
+<button
+id="additionalDeliveryBtn">
+
+OPEN
+
+</button>
+
+`;
+
+container.appendChild(card);
+
+document
+
+.getElementById("additionalDeliveryBtn")
+
+.addEventListener("click",()=>{
+
+alert("Additional Delivery module coming soon.");
+
+});
+
+}
+    
 function openStop(locationId){
 
 const stop = AppState.deliveries.remaining.find(
