@@ -1,15 +1,27 @@
-document
-.getElementById("adhocBtn")
-.addEventListener("click",()=>{
+document.getElementById("adhocBtn").addEventListener("click", () => {
 
-alert("Ad-hoc Delivery page coming next.");
+    AppState.additionalDeliveryType =
+
+        "New Ad-hoc Delivery";
+
+    saveState();
+
+    window.location.href =
+
+        "additionaldelivery_upload.html";
 
 });
 
-document
-.getElementById("revisitBtn")
-.addEventListener("click",()=>{
+document.getElementById("revisitBtn").addEventListener("click", () => {
 
-alert("Revisit Delivery page coming next.");
+    AppState.additionalDeliveryType =
+
+        "Revisit Completed Delivery";
+
+    saveState();
+
+    window.location.href =
+
+        "additionaldelivery_upload.html";
 
 });
