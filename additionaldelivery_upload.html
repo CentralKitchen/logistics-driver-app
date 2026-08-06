@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Additional Delivery</title>
+
+<link rel="stylesheet" href="css/app.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- Header -->
+
+    <div class="page-header">
+
+        <h2 class="page-title">
+            📦 Additional Delivery
+        </h2>
+
+        <p class="page-subtitle">
+            Submit an additional delivery photo and remarks.
+        </p>
+
+    </div>
+
+    <!-- Delivery Proof -->
+
+    <div class="card">
+
+        <h3>
+            📷 Delivery Proof
+        </h3>
+
+        <button
+            id="photoBtn">
+
+            Take Delivery Photo
+
+        </button>
+
+        <input
+            type="file"
+            id="cameraInput"
+            accept="image/*"
+            capture="environment"
+            hidden>
+
+        <img
+            id="photoPreview"
+            class="photo-preview"
+            style="display:none;">
+
+        <p
+            id="photoStatus">
+
+            No photo captured.
+
+        </p>
+
+    </div>
+
+    <!-- Remarks -->
+
+    <div class="card">
+
+        <h3>
+            📝 Remarks
+        </h3>
+
+        <textarea
+
+            id="remarks"
+
+            rows="5"
+
+            placeholder="Examples:
+
+• 443 resend
+
+• ASC Mountbatten
+
+• Not enough rice / chicken">
+
+        </textarea>
+
+    </div>
+
+    <!-- Submit -->
+
+    <button
+
+        id="submitBtn"
+
+        class="primary-btn">
+
+        ✅ SUBMIT ADDITIONAL DELIVERY
+
+    </button>
+
+    <!-- Back -->
+
+    <button
+
+        id="backBtn"
+
+        class="secondary-btn">
+
+        ← Back
+
+    </button>
+
+</div>
+
+<script src="js/state.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/sharepoint.js"></script>
+<script src="js/additionaldelivery_upload.js"></script>
+
+</body>
+
+</html>
