@@ -44,6 +44,8 @@ const defaultState = {
 
     currentStop: null,
 
+   additionalDeliveryType: "",
+
     gps: {
 
         latitude: null,
