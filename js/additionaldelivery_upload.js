@@ -68,6 +68,8 @@ function previewPhoto(event){
 
     reader.readAsDataURL(file);
 
+}
+
    function submitAdditionalDelivery(){
 
     alert("Additional Delivery submit function coming next.");
