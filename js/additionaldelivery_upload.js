@@ -70,8 +70,64 @@ function previewPhoto(event){
 
 }
 
-   function submitAdditionalDelivery(){
+   async function submitAdditionalDelivery(){
 
-    alert("Additional Delivery submit function coming next.");
+    // Validate Photo
+
+    if(selectedPhotoBase64 === ""){
+
+        alert("Please take a delivery photo.");
+
+        return;
+
+    }
+
+    // Validate Remarks
+
+    const remarks =
+
+        document
+        .getElementById("remarks")
+        .value
+        .trim();
+
+    if(remarks === ""){
+
+        alert("Please enter remarks.");
+
+        return;
+
+    }
+
+    // Build Payload
+
+    const payload = {
+
+        DriverName:
+            AppState.driver.name,
+
+        DriverType:
+            AppState.driver.type,
+
+        ServiceDate:
+            AppState.serviceDate,
+
+        DeliveryType:
+            AppState.additionalDeliveryType,
+
+        Remarks:
+            remarks,
+
+        PhotoName:
+            `${AppState.serviceDate.replace(/-/g,"")}_${AppState.driver.name.replace(/[^a-zA-Z0-9]/g,"")}_${new Date().getTime()}.jpg`,
+
+        PhotoBase64:
+            selectedPhotoBase64
+
+    };
+
+    console.log("========== ADDITIONAL DELIVERY ==========");
+
+    console.log(payload);
 
 }
