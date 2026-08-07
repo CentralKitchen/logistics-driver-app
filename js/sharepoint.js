@@ -259,3 +259,5 @@ static async completeDelivery(data) {
     return await response.json();
 
 }
+
+}
