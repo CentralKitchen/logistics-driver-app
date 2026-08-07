@@ -137,17 +137,21 @@ function previewPhoto(event){
 
     try{
 
-    await SharePoint.submitAdditionalDelivery(payload);
+       await SharePoint.submitAdditionalDelivery(payload);
 
-    alert("Additional Delivery submitted successfully.");
+       alert("Additional Delivery submitted successfully.");
 
-    window.location.href="stops.html";
+       window.location.href = "stops.html";
 
-}
-catch(error){
+   }
+    catch(error){
 
-    console.error(error);
+       console.error(error);
 
-    alert("Unable to submit. Please try again.");
+       alert("Unable to submit. Please try again.");
+
+       submitBtn.disabled = false;
+
+       submitBtn.innerHTML = "✅ SUBMIT ADDITIONAL DELIVERY";
 
 }
