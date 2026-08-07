@@ -126,6 +126,13 @@ function previewPhoto(event){
 
     };
 
+      const submitBtn = document.getElementById("submitBtn");
+
+      submitBtn.disabled = true;
+
+      submitBtn.innerHTML = "Uploading...";
+
+      
     console.log("========== ADDITIONAL DELIVERY ==========");
 
     try{
