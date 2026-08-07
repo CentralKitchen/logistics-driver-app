@@ -130,7 +130,7 @@ function previewPhoto(event){
 
       submitBtn.disabled = true;
 
-      submitBtn.innerHTML = "Uploading...";
+      submitBtn.innerHTML = "⏳ Uploading...";
 
       
     console.log("========== ADDITIONAL DELIVERY ==========");
