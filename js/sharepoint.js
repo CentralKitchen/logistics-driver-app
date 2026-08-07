@@ -21,6 +21,10 @@ static contractorFlowUrl =
  
  static completeDeliveryFlowUrl = 
  "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/22/workflows/e7e43362ce1949919b56a4b413790683/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=LXuWIjZnQ5YO4hKJMdYS-oCno4XBDEBCor7f65lNf5M";
+
+ static additionalDeliveryFlowUrl =
+ "https://defaultaf1a7dbfc35d455483b4aad0f8572e.87.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/30/workflows/7506b9ee272d41e69b6a2a82451e7c2a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ncixo3JHvJHeIyAcSZEdvWD6m177zTjOFjYMlw1qK84";
+
  
  static headers = {
         "Accept": "application/json;odata=nometadata"
@@ -219,5 +223,39 @@ static async completeDelivery(data) {
     return await response.json();
 
 }
+
+ static async submitAdditionalDelivery(payload){
+
+    const response = await fetch(
+
+        this.additionalDeliveryFlowUrl,
+
+        {
+
+            method:"POST",
+
+            headers:{
+
+                "Content-Type":"application/json"
+
+            },
+
+            body:JSON.stringify(payload)
+
+        }
+
+    );
+
+    if(!response.ok){
+
+        throw new Error(
+
+            "Unable to submit additional delivery."
+
+        );
+
+    }
+
+    return await response.json();
 
 }
