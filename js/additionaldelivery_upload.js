@@ -154,4 +154,6 @@ function previewPhoto(event){
 
        submitBtn.innerHTML = "✅ SUBMIT ADDITIONAL DELIVERY";
 
+   }
+
 }
